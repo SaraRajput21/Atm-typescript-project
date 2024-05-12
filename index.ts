@@ -10,7 +10,7 @@ let myPin = 4500;
 
 let pinAnswer = await inquirer.prompt([{
        name:"pin",
-       message: "Enter your number",
+       message: "Enter your pin",
        type:"number"
 
 }]);

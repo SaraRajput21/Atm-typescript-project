@@ -1,11 +1,15 @@
+#! /usr/bin/env node
 import inquirer from "inquirer";
+//variables
 let myBalance = 10000;
+//pin and object
 let myPin = 4500;
 let pinAnswer = await inquirer.prompt([{
         name: "pin",
-        message: "Enter your number",
+        message: "Enter your pin",
         type: "number"
     }]);
+//choices and condition
 if (pinAnswer.pin === myPin) {
     console.log("Correct pin code!!");
     let operationAns = await inquirer.prompt([{
@@ -15,6 +19,7 @@ if (pinAnswer.pin === myPin) {
             choices: ["withdraw", "check balance", "Fast cash"]
         }]);
     console.log(operationAns);
+    //condition for withdrawl
     if (operationAns.operation === "withdraw") {
         let amountAns = await inquirer.prompt([{
                 name: "amount",
@@ -28,6 +33,7 @@ if (pinAnswer.pin === myPin) {
             console.log("Your remaining balance is: " + myBalance);
         }
     }
+    //check balance
     else if (operationAns.operation === "check balance") {
         console.log("your balance is:" + myBalance);
     }
@@ -49,6 +55,7 @@ if (pinAnswer.pin === myPin) {
             console.log("Fast cash withdrawal successful. Your remaining balance is: " + myBalance);
         }
     }
+    // if pin is incorrect
 }
 else {
     console.log("Incorrect pin number.");
